@@ -104,3 +104,7 @@ test/                  testes com Vitest usando app.inject()
 - Validar se `data_pagamento` não está no futuro e aplicar a regra de multa/juros da Parte B quando o pagamento vier depois do vencimento (o enunciado não define o vencimento da cobrança, então não inventei um).
 - Valor pago no webhook: o payload do banco não traz o valor, então não há conciliação de pagamento a menor/maior.
 - Em produção: PostgreSQL, migrações versionadas, Docker, autenticação nas rotas internas e fila para processar webhooks de forma assíncrona.
+
+## Uso de IA
+
+Usei IA como apoio para escrever os testes automatizados, revisar a documentação (README e BUGS.md) e acelerar partes repetitivas do código. Revisei e testei tudo, e consigo explicar cada trecho e as decisões acima.
