@@ -1,0 +1,35 @@
+### Exemplos de chamadas (VS Code REST Client / IntelliJ HTTP Client)
+@base = http://localhost:3333
+
+### Cadastrar associado
+POST {{base}}/associados
+Content-Type: application/json
+
+{ "nome": "Maria Silva", "cpf": "529.982.247-25", "valor_mensalidade": 189.90 }
+
+### CPF inválido -> 422
+POST {{base}}/associados
+Content-Type: application/json
+
+{ "nome": "João", "cpf": "529.982.247-26", "valor_mensalidade": 189.90 }
+
+### Gerar cobrança
+POST {{base}}/cobrancas
+Content-Type: application/json
+
+{ "associado_id": 1, "mes_referencia": "2026-10" }
+
+### Consultar cobrança
+GET {{base}}/cobrancas/00000001
+
+### Aviso de pagamento (repita para ver o IGNORADO)
+POST {{base}}/webhooks/pagamento
+Content-Type: application/json
+
+{ "id_evento": "evt_000123", "nosso_numero": "00000001", "data_pagamento": "2026-10-15" }
+
+### Aviso com nosso_numero inexistente -> 404
+POST {{base}}/webhooks/pagamento
+Content-Type: application/json
+
+{ "id_evento": "evt_000999", "nosso_numero": "00012345", "data_pagamento": "2026-10-15" }
